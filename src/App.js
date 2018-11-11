@@ -10,7 +10,7 @@ import NotFound from './components/NotFound';
 import Featured from './components/Featured';
 
 const App = () => (
-  <BrowserRouter>
+  <BrowserRouter basename="/react&#45;router">
     <div className="container">
     <Header />
     {/* Switch goes through each Route looking for the specific
