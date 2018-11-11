@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Home from './components/Home';
+import Teachers from './components/Teachers';
+import About from './components/About';
+import Courses from './components/Courses';
+import NotFound from './components/NotFound';
+import Featured from './components/Featured';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <BrowserRouter>
+    <div className="container">
+    <Header />
+    {/* Switch goes through each Route looking for the specific
+    path. If the first one isn't, it checks the second one, etc.
+    The default case is the one without path. */}
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route exact path="/teachers" component={Teachers} />
+      <Route path="/teachers/:topic/:name" component={Featured} />
+      <Route path="/courses" component={Courses} />
+      <Route component={NotFound}/>
+    </Switch>
+    </div>
+  </BrowserRouter>
+);
 
 export default App;
